@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         openGraph: {
             title: `${filterName} - NoteHub`,
             description: `Browse and manage your ${filterName.toLowerCase()} in NoteHub. Organize your thoughts and ideas efficiently.`,
-            url: `https://your-domain.com/notes/filter/${filterValue}`,
+            url: `https://08-zustand-henna.vercel.app/notes/filter/${filterValue}`,
             images: [
                 {
                     url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",

@@ -5,30 +5,38 @@ import { useNoteStore, initialDraft } from "@/lib/store/noteStore";
 import * as NoteService from "@/lib/api";
 import { TAG_LIST } from "@/constants";
 import { useRouter } from "next/navigation";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const NoteForm = () => {
     const router = useRouter();
+    const queryClient = useQueryClient();
     const { draft, setDraft, clearDraft } = useNoteStore();
+
+    const createNoteMutation = useMutation({
+        mutationFn: NoteService.createNote,
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['notes'] });
+            clearDraft();
+            router.back();
+        },
+        onError: (error) => {
+            console.error('Error creating note:', error);
+        }
+    });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setDraft({ ...draft, [name]: value });
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         
-        try {
-            await NoteService.createNote({
-                title: currentValues.title,
-                content: currentValues.content,
-                tag: currentValues.tag
-            });
-            clearDraft();
-            router.back();
-        } catch (error) {
-            console.error('Error creating note:', error);
-        }
+        createNoteMutation.mutate({
+            title: currentValues.title,
+            content: currentValues.content,
+            tag: currentValues.tag
+        });
     };
 
     const currentValues = {

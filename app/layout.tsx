@@ -14,13 +14,12 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-    metadataBase: new URL('https://your-domain.com'),
     title: "NoteHub - Your Digital Note Management Solution",
     description: "Organize, manage, and access your notes efficiently with NoteHub. Create, edit, and categorize notes with tags for better productivity.",
     openGraph: {
         title: "NoteHub - Your Digital Note Management Solution",
         description: "Organize, manage, and access your notes efficiently with NoteHub. Create, edit, and categorize notes with tags for better productivity.",
-        url: "/",
+        url: "https://08-zustand-henna.vercel.app/",
         images: [
             {
                 url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",

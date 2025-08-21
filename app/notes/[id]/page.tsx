@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             openGraph: {
                 title: `${note.title} - NoteHub`,
                 description: truncatedContent || `Read the full note "${note.title}" on NoteHub. Tagged as ${note.tag}.`,
-                url: `https://your-domain.com/notes/${id}`,
+                url: `https://08-zustand-henna.vercel.app/notes/${id}`,
                 images: [
                     {
                         url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             openGraph: {
                 title: 'Note Not Found - NoteHub',
                 description: 'The requested note could not be found on NoteHub.',
-                url: `https://your-domain.com/notes/${id}`,
+                url: `https://08-zustand-henna.vercel.app/notes/${id}`,
                 images: [
                     {
                         url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
